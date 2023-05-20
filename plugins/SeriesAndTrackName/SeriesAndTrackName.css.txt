@@ -1,0 +1,23 @@
+.window.window-2
+{
+  right: 8px;
+  top: 5px !important;
+  margin-right: 10px;
+  transform: perspective(1000px) translateZ(-50px);
+  transform-origin: right top;
+  position: absolute;
+  width: unset !important;
+}
+
+.window.window-2>.header
+{
+  display: none;
+}
+
+.window.window-2>.data-wrapper>.data
+{
+  text-align: right;
+  padding: 3px 5px;
+  font-family: arial-black;
+  font-weight: 600;
+}

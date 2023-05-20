@@ -1,0 +1,38 @@
+/* 風速計 */
+.track-map>.wind-dir-wrapper {
+    --wind-dir-rotate: 0deg;
+    --wind-dir-color-h: 0deg;
+    --wind-dir-color-s: 76%;
+    --wind-dir-color-l: 55%;
+    width: 80px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+}
+.track-map.hide>.wind-dir-wrapper, .track-map>.wind-dir-wrapper.hide {
+    display: none;
+}
+.track-map>.wind-dir-wrapper>.wind-dir {
+    transform: rotate(var(--win-dir-rotate));
+    transition: transform 0.3s ease-out;
+    transform-origin: 50% 50% 0;
+}
+.track-map>.wind-dir-wrapper>.wind-dir>.wind-dir-parts {
+    stroke: hsl(var(--wind-dir-color-h), var(--wind-dir-color-s), var(--wind-dir-color-l));
+    transition: stroke 0.3s ease-out;
+}
+.track-map>.wind-dir-wrapper>.wind-velocity {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    font-size: 28px;
+    font-family: var(--regular-font);
+    opacity: 1;
+    color: white;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 5px;
+    white-space: nowrap;
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "SeriesAndTrackName",
+    "release": "1.0",
+    "active": true,
+    "description": "",
+    "initialize": "this.seriesName = ''\r\nthis.trackDisplayName = ''\r\n\r\nthis.makeString = (seriesName, trackDisplayName) => {\r\n  return `${seriesName} in ${trackDisplayName}`\r\n}\r\n",
+    "dispose": "",
+    "flush": "const instance = calculatedData.instance;\r\n\r\nthis.seriesName = ''\r\nthis.trackDisplayName = ''\r\n",
+    "update": "const instance = calculatedData.instance;\r\n\r\nconst _seriesName = calculatedData.seriesName\r\nconst _trackDisplayName = rawData.trackDisplayName\r\n\r\nif (this.seriesName !== _seriesName || this.trackDisplayName !== _trackDisplayName) {\r\n  this.seriesName = _seriesName\r\n  this.trackDisplayName = _trackDisplayName\r\n  rawData[`${instance}.Window2.Text`] = this.makeString(_seriesName, _trackDisplayName)\r\n  console.debug(`property: ${instance}.Window2.Text = `, rawData[`${instance}.Window2.Text`])\r\n}\r\n"
+  }
+]
