@@ -47,9 +47,8 @@ export LANG=ja_JP.utf-8
 for i in $(find . -name '*.md'); do
   echo "Target file: ${i}..."
   sed -ri \
-   's#]\(\.\./images/(.*)\)$#](https://github.com/torichanjp/iracing-sdk-gaming/blob/'${VERSION}'/images/\1?raw=true)#g' \
+   's#]\((\.\./)+images/(.*)\)$#](https://github.com/torichanjp/iracing-sdk-gaming/blob/'${VERSION}'/images/\2?raw=true)#g' \
    $i
-  cat $i
   npx md-to-pdf $i
   if [[ $? != 0 ]]; then
       echo "Failed to make PDF file(s)" 2>&1
