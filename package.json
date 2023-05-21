@@ -1,0 +1,18 @@
+{
+  "name": "iracing-sdk-gaming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/torichanjp/iracing-sdk-gaming.git"
+  },
+  "author": "Shigeki TORII",
+  "license": "GNU GPL v3",
+  "devDependencies": {
+    "md-to-pdf": "^5.2.4"
+  }
+}
