@@ -4,9 +4,9 @@
     "release": "1.0",
     "active": true,
     "description": "",
-    "initialize": "this.seriesName = ''\r\nthis.trackDisplayName = ''\r\n\r\nthis.makeString = (seriesName, trackDisplayName) => {\r\n  return `${seriesName} in ${trackDisplayName}`\r\n}\r\n",
+    "initialize": "/*\r\n    以下で指定したウィンドウを利用します\r\n    使えるウィンドウはWindow1～Window4までです。\r\n    Windowコンポーネントをインポートしなくても使えますが、手動で表示、非表示したい場合は、F4キー＋F2キーで、↓で指定したWindowを\r\n    インポートする必要があります。\r\n*/\r\nthis.useWindow = 'Window2';\r\n\r\nthis.seriesName = ''\r\nthis.trackDisplayName = ''\r\nthis.instanceName = null\r\n\r\n/* 表示するフォーマットを変える場合はここを変更します */\r\nthis.makeString = (seriesName, trackDisplayName) => {\r\n  return `${seriesName} in ${trackDisplayName}`\r\n}\r\n",
     "dispose": "",
-    "flush": "const instance = calculatedData.instance;\r\n\r\nthis.seriesName = ''\r\nthis.trackDisplayName = ''\r\n",
-    "update": "const instance = calculatedData.instance;\r\n\r\nconst _seriesName = calculatedData.seriesName\r\nconst _trackDisplayName = rawData.trackDisplayName\r\n\r\nif (this.seriesName !== _seriesName || this.trackDisplayName !== _trackDisplayName) {\r\n  this.seriesName = _seriesName\r\n  this.trackDisplayName = _trackDisplayName\r\n  rawData[`${instance}.Window2.Text`] = this.makeString(_seriesName, _trackDisplayName)\r\n  console.debug(`property: ${instance}.Window2.Text = `, rawData[`${instance}.Window2.Text`])\r\n}\r\n"
+    "flush": "this.seriesName = ''\r\nthis.trackDisplayName = ''\r\n\r\nrawData[`${instance}.${this.useWindow}.Text`] = ''",
+    "update": "const instance = calculatedData.instance;\r\nif (this.instance !== instance) {\r\n  this.instance = instance;\r\n  rawData[`${instance}.${this.useWindow}.Display`] = 'Show';\r\n}\r\n\r\nconst _seriesName = calculatedData.seriesName\r\nconst _trackDisplayName = rawData.trackDisplayName\r\n\r\nif (this.seriesName !== _seriesName || this.trackDisplayName !== _trackDisplayName) {\r\n  this.seriesName = _seriesName\r\n  this.trackDisplayName = _trackDisplayName\r\n  rawData[`${instance}.${this.useWindow}.Text`] = this.makeString(_seriesName, _trackDisplayName)\r\n  console.debug(`property: ${instance}.${useWindow}.Text = `, rawData[`${instance}.${useWindow}.Text`])\r\n}\r\n"
   }
 ]

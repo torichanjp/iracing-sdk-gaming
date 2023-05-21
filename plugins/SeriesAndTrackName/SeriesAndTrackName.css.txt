@@ -1,4 +1,5 @@
-.window.window-2
+/* Window2 */
+.overlay>.window.window-2
 {
   right: 8px;
   top: 5px !important;
@@ -7,17 +8,22 @@
   transform-origin: right top;
   position: absolute;
   width: unset !important;
+  display: block;
 }
 
-.window.window-2>.header
+.overlay>.window.window-2>.header
 {
   display: none;
 }
 
-.window.window-2>.data-wrapper>.data
+.overlay>.window.window-2>.data-wrapper>.data
 {
   text-align: right;
   padding: 3px 5px;
   font-family: arial-black;
   font-weight: 600;
+}
+
+.window.window-2 {
+  display: none;
 }
