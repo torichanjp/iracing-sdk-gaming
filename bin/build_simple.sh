@@ -2,7 +2,12 @@
 
 set -eu
 
-VERSION=$1
+# タグやブランチ名に「/」が入っていると失敗になるため、「-」に置換する。
+VERSION=$(echo $1 | sed -r 's#/#-#g')
+# 画像パス変換で必要なので取っておく。
+ORG_VERSION=$1
+echo "VERSION: $VERSION"
+echo "ORG_VERSION: $ORG_VERSION"
 
 BIN_DIR="$(dirname $0)"
 
@@ -47,7 +52,7 @@ export LANG=ja_JP.utf-8
 for i in $(find . -name '*.md'); do
   echo "Target file: ${i}..."
   sed -ri \
-   's#]\((\.\./)+images/(.*)\)$#](https://github.com/torichanjp/iracing-sdk-gaming/blob/'${VERSION}'/images/\2?raw=true)#g' \
+   's#]\((\.\./)+images/(.*)\)$#](https://github.com/torichanjp/iracing-sdk-gaming/blob/'${ORG_VERSION}'/images/\2?raw=true)#g' \
    $i
   npx md-to-pdf $i
   if [[ $? != 0 ]]; then

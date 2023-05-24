@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [20]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -17,6 +17,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - uses: actions/github-script@v5
+        id: replace-slash
+        with:
+          script: |
+            const str = "${{ github.ref_name }}";
+            return str.replace('/', '-');
+          result-encoding: string
       - run: node --version
       - run: npm install
       - run: sudo apt install fonts-ipafont fonts-ipaexfont
@@ -28,5 +35,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: SDK-Gaming all plugnin package
-          path: build/sdk-gaming-plugins-by-torichanjp-${{ github.ref_name }}.zip
+          path: build/sdk-gaming-plugins-by-torichanjp-${{ steps.replace-slash.outputs.result }}.zip
       - run: echo "🍏 This job's status is ${{ job.status }}."
